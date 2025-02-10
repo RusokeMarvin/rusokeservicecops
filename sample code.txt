@@ -1,0 +1,183 @@
+import React, { useState,useEffect } from "react";
+import "./App.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faBars, faX } from "@fortawesome/free-solid-svg-icons";
+
+function App() {
+  const [on, SetOn] = useState(true);
+  const [display, setDisplay] = useState(true);
+  const [data,setData]=useState('shoes');
+  const [items,setItems]=useState([]);
+  
+  const [car,setCar]=useState([{
+    name:'BMW',
+    color:'red',
+    year:'2023',
+  },
+  {
+    name:'Benz',
+    color:'black',
+    year:'2024',
+  }
+])
+
+
+
+  function Toggle() {
+    SetOn((prev) => !prev);
+  }
+
+  function DarkMode() {
+    setDisplay((prev) => !prev);
+  }
+
+  useEffect(()=>{
+    fetch(`http://127.0.0.1:8000/posts/${data}/`)
+     .then(response=>response.json())
+     .then(json=>setData(json))
+  },[data])
+   
+  return (
+    <div className={display ? "white" : "black"}>
+      
+      <nav className={on ? "extra" : "computers"}>
+        <ul>
+          <FontAwesomeIcon
+            icon={on ? faBars : faX}
+            className="menu"
+            onClick={Toggle}
+          />
+          <li>Home</li>
+          <li>Account</li>
+          <li>About</li>
+          <li>LogOut</li>
+        </ul>
+      </nav>
+      <nav className={on ? "computer" : "phone"}>
+        <ul>
+          <FontAwesomeIcon
+            icon={on ? faBars : faX}
+            className="menu"
+            onClick={Toggle}
+          />
+          <li>Home</li>
+          <li>Account</li>
+          <li>About</li>
+          <li>LogOut</li>
+        </ul>
+      </nav>
+      <div className={display ? "white" : "black"}>
+        <br />
+        <button onClick={DarkMode}>Dark Mode</button>
+        <h1>Infectious Diseases Institute</h1>
+        <h2>
+          We specialize in tackling infectious diseases with the help of
+          advanced IT equipments to ensure sustainable health for all Ugandans
+        </h2>
+        <h1>Address: Makerere University</h1>
+        <h2>Contact: 07783883838339</h2>
+      </div>
+      <div>
+        <button onClick={()=>setData('shoes')}>Shoes</button>
+        <button  onClick={()=>setData('clothes')}>Clothes</button>
+        <button  onClick={()=>setData('tech')}>Tech</button>
+        <h1>{data}</h1>
+      </div>
+      <div>
+      {
+        items.map(item => {
+          return <p>{JSON.stringify(item)}</p>
+        }
+        )}
+      
+        
+      </div>
+    </div>
+  );
+}
+
+export default App;
+
+
+
+................................
+
+.................
+
+body,html{
+    margin: 0;
+}
+.computer{
+    background-color: aquamarine;
+    height: 8em;
+    position: relative;
+}
+
+.computer ul{
+display: flex;
+gap: 2rem;
+list-style: none;
+font-size: 45px;
+position: absolute;
+}
+
+.computers{
+    background-color: aquamarine;
+    height: 8em;
+    position: relative;
+}
+
+.computers ul{
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+    font-size: 45px;
+    position: absolute;
+    }
+
+.computers ul li{
+display: none;
+}
+
+.phone{
+    margin-top: -10em;
+    width: 22%;
+    height: 100vh;
+    flex-direction: column;
+    background-color: rgb(127, 208, 255);
+    padding: 10px;
+    position: absolute;
+}
+
+.phone ul{
+    display: flex;
+    flex-direction: column;
+    list-style: none;
+    gap: 2rem;
+    padding: 12px;
+    font-size: 45px;
+    align-items: flex-start;
+
+}
+
+.phone ul .menu{
+    list-style: none; 
+    
+}
+
+.black{
+    color: white;
+    background-color: black;
+    height: 100vh;
+}
+
+.extra{
+    display: none;   
+}
+
+
+
+
+
+
+

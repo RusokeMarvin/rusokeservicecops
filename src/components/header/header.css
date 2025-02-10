@@ -1,0 +1,111 @@
+.header nav {
+    height: 6.5em;
+    background: #276076;
+    width: 100%;
+    display: flex;
+    align-items: center; /* Centers content vertically */
+    padding: 0 2em;
+    color: white;
+    box-sizing: border-box; /* Ensures padding is included in total width */
+    list-style: none;
+  }
+  
+  .header nav .textlogo {
+    display: flex;
+    align-items: center; /* Align title and logo vertically */
+    gap: 1rem;
+    margin-left: 1rem;
+    flex-shrink: 0; /* Prevents logo from shrinking */
+  }
+  
+  
+  .header nav ul .linked,.linked2{
+    text-decoration: none; /* Remove underline */
+    color: white;
+  }
+  
+  .header nav ul {
+    display: flex;
+    align-items: center;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    gap: 2rem;
+    flex-grow: 1; /* Pushes links towards the right */
+    justify-content: flex-end;
+  }
+  
+  .header nav .right-links {
+    font-size: 25px;
+    display: flex;
+    align-items: center;
+    list-style: none;
+    gap: 2rem;
+    margin-left: auto; /* Pushes this section to the far right */
+    justify-content: space-around; /* Ensures even spacing */
+   
+  }
+  
+  
+
+  
+  .header nav .menu {
+    width: 25px;
+    height: 25px;
+    cursor: pointer;
+    margin-right: 1rem;
+    flex-shrink: 0; /* Prevents icon from shrinking */
+  }
+  
+  /* Sidebar styles */
+  .header nav .sidebar {
+    backdrop-filter: blur(100px);
+    top: 0;
+    right: 0;
+    height: 100vh;
+    box-shadow: -10px 0 10px rgba(0, 0, 0, 0.1);
+    display: none;
+    flex-direction: column;
+    position: fixed;
+    background: rgba(255, 255, 255, 0.2);
+    width: 100%;
+    z-index: 20;
+    align-items: flex-start;
+    justify-content: flex-start;
+  }
+  
+  /* Sidebar items */
+  .header .sidebar li {
+    color: black;
+    width: 100%;
+  }
+  
+  .header nav ul li:hover {
+    background: rgb(175, 174, 174);
+    border-radius: 3px;
+    cursor: pointer;
+  }
+  
+  /* Responsive styles */
+  @media screen and (max-width: 768px) {
+    .header nav .linked2 {
+      display: none;
+    }
+  
+    .header nav img {
+      width: 60px;
+    }
+  
+    .header nav .sidebar {
+      width: 200px;
+    }
+  
+    .header nav .searching1{
+      display: none;
+    }
+  
+    .header nav .searching2{
+      display: none;
+    }
+  }
+  
