@@ -101,7 +101,7 @@ function Home() {
             </div>
 
             {info === 'posts' && (
-                <div className="form">
+                <div className={"form"}>
                     <input
                         type="text"
                         placeholder="Title"
