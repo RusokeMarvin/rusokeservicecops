@@ -1,6 +1,7 @@
 import React from "react";
 import "./header.css";
-import { Link } from "react-router-dom";
+import { Link , useNavigate} from "react-router-dom";
+import { useAuth } from '../../contexts/authContext'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faBars,
@@ -11,9 +12,12 @@ import {
   faUser,
   faX,
 } from "@fortawesome/free-solid-svg-icons";
-import ourlogo from "../../Images/logo.png";
+import { doSignOut } from '../../firebase/auth'
+
 
 function Header() {
+  const navigate = useNavigate()
+  const { userLoggedIn } = useAuth()
   const showSidebar = () => {
     const sidebar = document.querySelector(".sidebar");
     sidebar.style.display = "flex";
@@ -23,6 +27,7 @@ function Header() {
     const sidebar = document.querySelector(".sidebar");
     sidebar.style.display = "none";
   };
+
 
   return (
     <div className="header">
@@ -43,7 +48,7 @@ function Header() {
             <li>Home</li>
           </Link>
           <Link to="/logout" className="linked">
-            <li>Logout</li>
+            <li onClick={() => { doSignOut().then(() => { navigate('/login') }) }}>Logout</li>
           </Link>
         </ul>
 
@@ -55,7 +60,7 @@ function Header() {
             </li>
           </Link>
           <Link to="/gallery" className="linked2">
-            <li>
+            <li onClick={() => { doSignOut().then(() => { navigate('/login') }) }}>
               <FontAwesomeIcon icon={faSignOut} /> Logout
             </li>
           </Link>
