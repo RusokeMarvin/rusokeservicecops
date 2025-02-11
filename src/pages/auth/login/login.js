@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Navigate, Link } from 'react-router-dom';
-import { doSignInWithEmailAndPassword, doSignInWithGoogle } from '../../../firebase/auth';
+import { doSignInWithEmailAndPassword, doSignInWithGoogle, doPasswordReset } from '../../../firebase/auth';  // Import the password reset function
 import { useAuth } from '../../../contexts/authContext';
 import { useRive, Layout, Fit, Alignment } from '@rive-app/react-canvas';
 import google from './../../../Images/Googlelogo.png';
@@ -12,6 +12,9 @@ const Login = () => {
     const [password, setPassword] = useState('');
     const [isSigningIn, setIsSigningIn] = useState(false);
     const [errorMessage, setErrorMessage] = useState('');
+    const [isResettingPassword, setIsResettingPassword] = useState(false);  // State for password reset
+    const [resetEmailSent, setResetEmailSent] = useState(false);  // State for successful reset email
+    const [showResetPopup, setShowResetPopup] = useState(false);  // State to control the popup visibility
 
     // Rive Animation Setup
     const { rive, RiveComponent } = useRive({
@@ -40,7 +43,6 @@ const Login = () => {
             }
         }
     }, [rive]);
-    
 
     const onSubmit = async (e) => {
         e.preventDefault();
@@ -74,13 +76,30 @@ const Login = () => {
         }
     };
 
+    const handleForgotPassword = async (e) => {
+        e.preventDefault();
+        if (!isResettingPassword) {
+            setIsResettingPassword(true);
+            try {
+                await doPasswordReset(email);
+                setResetEmailSent(true);  // Indicate that the reset email has been sent
+                alert("Password reset email sent! Please check your inbox");  // Show alert
+            } catch (err) {
+                setErrorMessage(err.message);
+            } finally {
+                setIsResettingPassword(false);
+            }
+        }
+    };
+    
+
     return (
         <div>
             {userLoggedIn && <Navigate to="/home" replace />}
             <main className="login-container">
-            <div className="riv">
-                        <RiveComponent />
-                    </div>
+                <div className="riv">
+                    <RiveComponent />
+                </div>
                 <div className="login-card">
                     <form onSubmit={onSubmit} className="login-form">
                         <div className="input-group">
@@ -125,11 +144,41 @@ const Login = () => {
                         <div className="line"></div>
                     </div>
                     <button disabled={isSigningIn} onClick={onGoogleSignIn} className="google-btn">
-                        <img src={google} alt="Google Logo" className='googlelogo'/>
+                        <img src={google} alt="Google Logo" className='googlelogo' />
                         {isSigningIn ? 'Signing In...' : 'Continue with Google'}
                     </button>
+
+                    {/* Forgot Password Link */}
+                    <p className="forgot-password-link">
+                        <a href="#" onClick={() => setShowResetPopup(true)}>
+                            Forgot your password?
+                        </a>
+                    </p>
+
+
                 </div>
             </main>
+
+            {/* Password Reset Popup */}
+            {showResetPopup && (
+                <div className="reset-popup">
+                    <div className="reset-popup-content">
+                        <h3>Reset Password</h3>
+                        <p>Enter your email address to receive a password reset link.</p>
+                        <input
+                            type="email"
+                            value={email}
+                            onChange={(e) => setEmail(e.target.value)}
+                            placeholder="Enter your email"
+                            required
+                        />
+                        <button onClick={handleForgotPassword} disabled={isResettingPassword}>
+                            {isResettingPassword ? 'Sending...' : 'Send Reset Link'}
+                        </button>
+                        <button onClick={() => setShowResetPopup(false)}>Close</button>
+                    </div>
+                </div>
+            )}
         </div>
     );
 };
