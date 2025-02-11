@@ -18,6 +18,29 @@ Modularized components (Header, Footer, etc.)
 
 Responsive design
 
+Email & Password Login
+
+Google Sign-In Integration
+
+Animated Login UI (Rive Animation)
+1. Interactive animations based on user actions.
+
+Remember Me on Register page
+
+Pagination of resources from the API
+
+Caching for remember me logic.
+
+Dynamic Form Validator(Register Form)
+Validates multiple fields dynamically (e.g., email, password(lower, upper, symbols and numbers), phone number).
+Uses a configuration object to specify rules.
+Displays errors without reloading the page.
+
+Supports:
+Required fields.
+Regex validation.
+Minimum length validation.
+
 #### Installation
 
 # Prerequisites
