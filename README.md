@@ -1,4 +1,4 @@
-# Steps for Making use of this React js website
+# How to run this App
 
 ## Description
 
@@ -32,7 +32,7 @@ Ensure you have the following installed:
 
 1. Clone the repository:
 
-2. git clone https://github.com/your-username/your-repo.git
+2. git clone https://github.com/RusokeMarvin/rusokeservicecops.git
 
 3. cd rusokeservicecops
 
