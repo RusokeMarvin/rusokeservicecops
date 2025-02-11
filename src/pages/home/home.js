@@ -10,12 +10,15 @@ function Home() {
     const [data, setData] = useState([]);
     const [loading, setLoading] = useState(true);
     const [newPost, setNewPost] = useState({ title: '', body: '' });
-    const [showAll, setShowAll] = useState(false);
+
+    // 🔹 Pagination State
+    const [page, setPage] = useState(1);
+    const limit = 10; // Number of items per page
 
     const fetchData = useCallback(async () => {
         setLoading(true);
         try {
-            const response = await fetch(`https://jsonplaceholder.typicode.com/${info}`);
+            const response = await fetch(`https://jsonplaceholder.typicode.com/${info}?_page=${page}&_limit=${limit}`);
             const json = await response.json();
             setData(json);
         } catch (error) {
@@ -23,7 +26,7 @@ function Home() {
         } finally {
             setLoading(false);
         }
-    }, [info]);
+    }, [info, page]);
 
     useEffect(() => {
         fetchData();
@@ -93,7 +96,7 @@ function Home() {
 
     useEffect(() => {
         Aos.init({ duration: 2000 });
-      }, []);
+    }, []);
 
     return (
         <div>
@@ -128,7 +131,7 @@ function Home() {
                 <p className="loading">Loading...</p>
             ) : (
                 <div className="content">
-                    {(showAll ? data : data.slice(0, 10)).map((item) => (
+                    {data.map((item) => (
                         <div key={item.id} className="card" data-aos="slide-up">
                             {info === "posts" && (
                                 <>
@@ -136,8 +139,8 @@ function Home() {
                                     <h2>User ID: {item.userId}</h2>
                                     <p>{item.body}</p>
                                     <div className='updatedel'>
-                                    <button onClick={() => updatePost(item.id)}>Edit</button>
-                                    <button onClick={() => deletePost(item.id)}>Delete</button>
+                                        <button onClick={() => updatePost(item.id)}>Edit</button>
+                                        <button onClick={() => deletePost(item.id)}>Delete</button>
                                     </div>
                                 </>
                             )}
@@ -183,16 +186,18 @@ function Home() {
                     ))}
                 </div>
             )}
-            {data.length > 10 && (
-                <div>
-                <button className="toggle-btn" onClick={() => setShowAll(!showAll)}>
-                    {showAll ? "Show Less" : "Show More"}
+            <div className="pagination">
+                <button onClick={() => setPage(prev => Math.max(prev - 1, 1))} disabled={page === 1}>
+                    Previous
+                </button>
+                <span>Page {page}</span>
+                <button onClick={() => setPage(prev => prev + 1)}>
+                    Next
                 </button>
                 <br/>
                 <br/>
-                </div>
-            )}
-              
+            </div>
+
             <Footer />
         </div>
     );

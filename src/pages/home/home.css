@@ -65,6 +65,10 @@ textarea {
     gap: 0.5rem;
 }
 
+.pagination span{
+    padding: 2px;
+}
+
 @media screen and (max-width:768px){
     .list {
         flex-direction: column;
