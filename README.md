@@ -34,15 +34,15 @@ Ensure you have the following installed:
 
 2. git clone https://github.com/your-username/your-repo.git
 
-3. cd your-repo
+3. cd rusokeservicecops
 
 ### Install dependencies:
 
 npm install
 
-Start the development server:
+### Start the development server:
 
 npm start
 
-Open in browser:
+### Open in browser:
 http://localhost:3000
