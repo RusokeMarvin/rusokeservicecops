@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 import { Navigate, Link } from 'react-router-dom';
 import { useAuth } from '../../../contexts/authContext';
 import { doCreateUserWithEmailAndPassword } from '../../../firebase/auth';
@@ -28,12 +28,23 @@ const Register = () => {
     const [formData, setFormData] = useState({ email: '', password: '', confirmPassword: '' });
     const [errors, setErrors] = useState({});
     const [isRegistering, setIsRegistering] = useState(false);
+    const [rememberMe, setRememberMe] = useState(false);
+    useEffect(() => {
+        const savedEmail = localStorage.getItem("rememberedEmail");
+        if (savedEmail) {
+            setFormData((prev) => ({ ...prev, email: savedEmail }));
+            setRememberMe(true);
+        }
+    }, []);
+    
+
 
     const validateField = (name, value) => {
+        if (!validationRules[name]) return; // Ignore fields without validation rules
+    
         let error = "";
-
         const rules = validationRules[name];
-
+    
         if (rules.required && !value.trim()) {
             error = `${name} is required`;
         } else if (rules.pattern && !rules.pattern.test(value)) {
@@ -43,33 +54,48 @@ const Register = () => {
         } else if (rules.matchField && formData[rules.matchField] !== value) {
             error = rules.errorMessage;
         }
-
+    
         setErrors((prev) => ({ ...prev, [name]: error }));
     };
+    
 
     const handleChange = (e) => {
-        const { name, value } = e.target;
+        const { name, value, type, checked } = e.target;
         setFormData((prev) => ({ ...prev, [name]: value }));
-        validateField(name, value);
+
+        if (type === "checkbox") {
+            setRememberMe(checked);
+        } else {
+            validateField(name, value);
+        }
     };
+
 
     const onSubmit = async (e) => {
         e.preventDefault();
+    
+        Object.keys(formData)
+    .filter((key) => validationRules[key]) // Ignore fields without validation rules
+    .forEach((key) => validateField(key, formData[key]));
 
-        // Validate all fields before submission
-        Object.keys(formData).forEach((key) => validateField(key, formData[key]));
-
-        // Check if there are any errors
+    
         if (Object.values(errors).some((error) => error)) return;
-
+    
         setIsRegistering(true);
         try {
             await doCreateUserWithEmailAndPassword(formData.email, formData.password);
+    
+            if (rememberMe) {
+                localStorage.setItem("rememberedEmail", formData.email);
+            } else {
+                localStorage.removeItem("rememberedEmail");
+            }
         } catch (error) {
             setErrors((prev) => ({ ...prev, form: error.message }));
             setIsRegistering(false);
         }
     };
+    
 
     return (
         <>
@@ -79,6 +105,12 @@ const Register = () => {
                 <div className="register-box">
                     <h3 className="register-title">Create a New Account</h3>
                     <form onSubmit={onSubmit}>
+                        <input
+                            type="text"
+                            name="name"
+                            className="register-input"
+                            placeholder="Name"
+                        />
                         <input
                             type="email"
                             name="email"
@@ -110,6 +142,16 @@ const Register = () => {
                         {errors.confirmPassword && <span className="register-error">{errors.confirmPassword}</span>}
 
                         {errors.form && <span className="register-error">{errors.form}</span>}
+
+                        <label className="remember-me">
+                            <input
+                                type="checkbox"
+                                name="rememberMe"
+                                checked={rememberMe}
+                                onChange={handleChange}
+                            />
+                            Remember Me
+                        </label>
 
                         <button type="submit" className="register-button" disabled={isRegistering}>
                             {isRegistering ? 'Signing Up...' : 'Sign Up'}

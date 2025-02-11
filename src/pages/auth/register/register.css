@@ -94,3 +94,15 @@
     color: #6B21A8;
     text-decoration: underline;
 }
+
+.remember-me {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+    font-size: 14px;
+    color: #4F46E5;
+}
+
+.remember-me input {
+    margin-right: 8px;
+}
