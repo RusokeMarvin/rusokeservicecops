@@ -10,7 +10,7 @@
 
 /* Registration Box */
 .register-box {
-    width: 400px;
+    width: 27%;
     padding: 30px;
     background: #ffffff;
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
@@ -105,4 +105,10 @@
 
 .remember-me input {
     margin-right: 8px;
+}
+
+@media screen and (max-width:768px) {
+    .register-box {
+        width: 55%;
+    }
 }
