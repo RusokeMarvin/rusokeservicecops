@@ -13,13 +13,13 @@
 
 
 .footers footer .detailfooter div p {
-    color: #737373;
+    color: #c5c1c1;
     margin-top: 0;
     margin-bottom: 1rem;
     line-height: 1.7;
     font-weight: 400;
     font-size: 1rem;
-    max-width: 18em;
+    max-width: 50%;
 }
 
 @media screen and (max-width:768px) {

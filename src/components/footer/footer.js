@@ -10,7 +10,7 @@ function Footer() {
           <div className='detailfooter'>
           <div>
             <h1>ServiceCops</h1>
-            <p>My name is Rusoke Marvin, i'm a passionate Software Developer. I love leveraging my skills to solve problems. I'm innovative, eager to learn new things and grow with ServiceCops</p>
+            <p>My name is Rusoke Marvin, and I am a passionate Software Developer with a strong drive for innovation and problem-solving. I thrive on leveraging my skills to create impactful solutions and continuously seek opportunities to learn and grow. With a keen interest in technology and a commitment to excellence, I am excited about the opportunity to contribute to ServiceCops and be part of a dynamic, forward-thinking team.</p>
           </div>
           
           </div>

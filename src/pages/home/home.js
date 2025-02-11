@@ -2,12 +2,15 @@ import React, { useEffect, useState, useCallback } from 'react';
 import Header from "../../components/header/header";
 import Footer from '../../components/footer/footer';
 import './home.css';
+import Aos from 'aos';
+import 'aos/dist/aos.css';
 
 function Home() {
     const [info, setInfo] = useState('posts');
     const [data, setData] = useState([]);
     const [loading, setLoading] = useState(true);
     const [newPost, setNewPost] = useState({ title: '', body: '' });
+    const [showAll, setShowAll] = useState(false);
 
     const fetchData = useCallback(async () => {
         setLoading(true);
@@ -88,6 +91,10 @@ function Home() {
         }
     };
 
+    useEffect(() => {
+        Aos.init({ duration: 2000 });
+      }, []);
+
     return (
         <div>
             <Header />
@@ -121,15 +128,17 @@ function Home() {
                 <p className="loading">Loading...</p>
             ) : (
                 <div className="content">
-                    {data.map((item) => (
-                        <div key={item.id} className="card">
+                    {(showAll ? data : data.slice(0, 10)).map((item) => (
+                        <div key={item.id} className="card" data-aos="slide-up">
                             {info === "posts" && (
                                 <>
                                     <h1>{item.title}</h1>
                                     <h2>User ID: {item.userId}</h2>
                                     <p>{item.body}</p>
+                                    <div className='updatedel'>
                                     <button onClick={() => updatePost(item.id)}>Edit</button>
                                     <button onClick={() => deletePost(item.id)}>Delete</button>
+                                    </div>
                                 </>
                             )}
                             {info === "comments" && (
@@ -174,7 +183,16 @@ function Home() {
                     ))}
                 </div>
             )}
-
+            {data.length > 10 && (
+                <div>
+                <button className="toggle-btn" onClick={() => setShowAll(!showAll)}>
+                    {showAll ? "Show Less" : "Show More"}
+                </button>
+                <br/>
+                <br/>
+                </div>
+            )}
+              
             <Footer />
         </div>
     );

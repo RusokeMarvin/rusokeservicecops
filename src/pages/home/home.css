@@ -59,3 +59,15 @@ textarea {
     height: 80px;
     resize: none;
 }
+
+.updatedel{
+    display: flex;
+    gap: 0.5rem;
+}
+
+@media screen and (max-width:768px){
+    .list {
+        flex-direction: column;
+    }
+    
+}
