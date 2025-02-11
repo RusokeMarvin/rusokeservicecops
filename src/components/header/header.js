@@ -3,6 +3,7 @@ import "./header.css";
 import { Link , useNavigate} from "react-router-dom";
 import { useAuth } from '../../contexts/authContext'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import ourlogo from "../../Images/Service-Cops.png";
 import {
   faBars,
   faCartShopping,
@@ -38,6 +39,7 @@ function Header() {
         {/* Title and Logo */}
         <div className="textlogo">
           <h1>ServiceCops</h1>
+          <img src={ourlogo}/>
         </div>
 
 

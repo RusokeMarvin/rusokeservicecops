@@ -85,6 +85,10 @@
     border-radius: 3px;
     cursor: pointer;
   }
+
+  .header nav img {
+    width: 100px;
+  }
   
   /* Responsive styles */
   @media screen and (max-width: 768px) {
