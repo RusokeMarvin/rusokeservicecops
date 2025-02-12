@@ -90,6 +90,17 @@ This one has multiple buttons that trigger specific states. It uses useState rea
 This is one of the end points of the API. And it supports toggling of status of the Todo task
 ![status](https://github.com/user-attachments/assets/298ebed3-632e-4a6d-9e38-357f89e7c60e)
 
+# NB:
+I encountered a challenge while trying to fetch data from the API you provided. Specifically, I 
+was unable to retrieve the images from the API endpoint of /photos, even when I tested the image URLs individually in 
+the browser, they still did not load. As a result, the image links failed to work when 
+integrated into my implementation.
+Despite this issue, I have made significant progress on the rest of the task and have successfully 
+implemented the other features.
+
+Thanks and Regards
+Rusoke Marvin
+
 
 
 
