@@ -98,7 +98,8 @@ integrated into my implementation.
 Despite this issue, I have made significant progress on the rest of the task and have successfully 
 implemented the other features.
 
-Thanks and Regards
+Thanks and Regards,
+
 Rusoke Marvin
 
 
