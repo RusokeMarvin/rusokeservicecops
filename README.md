@@ -41,17 +41,17 @@ Ensure you have the following installed:
 
 ### Clone the repository:
 
-1. git clone https://github.com/RusokeMarvin/rusokeservicecops.git
+### `git clone https://github.com/RusokeMarvin/rusokeservicecops.git`
 
-2. cd rusokeservicecops
+### `cd rusokeservicecops`
 
 ### Install dependencies:
 
-npm install
+### `npm install`
 
 ### Start the development server:
 
-npm start
+### `npm start`
 
 ### Open in browser:
 http://localhost:3000
