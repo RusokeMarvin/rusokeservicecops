@@ -5,34 +5,20 @@
 This is a React-based project that fetches and displays data from a fake API (JSONPlaceholder). It supports pagination, category-based filtering, and dynamic rendering of different types of content.
 
 ## Features
-
-Fetches data from JSONPlaceholder
-
-Displays posts, comments, albums, photos, todos, and users
-
-Pagination support with Next & Previous buttons
-
-Animated UI using AOS (Animate On Scroll)
-
-Modularized components (Header, Footer, etc.)
-
-Responsive design
-
-Email & Password Login
-
-Google Sign-In Integration
-
-Animated Login UI (Rive Animation)
+1. Fetches data from JSONPlaceholder
+2. Displays posts, comments, albums, photos, todos, and users
+3. Pagination support with Next & Previous buttons
+4. Animated UI using AOS (Animate On Scroll)
+5. Modularized components (Header, Footer, etc.)
+6. Responsive design
+7. Email & Password Login
+8. Google Sign-In Integration
+9. Animated Login UI (Rive Animation)
 1. Interactive animations based on user actions.
-
-Remember Me on Register page
-
-Pagination of resources from the API
-
-Caching for remember me logic.
-
-Dynamic Form Validator(Register Form)
-
+10. Remember Me on Register page
+11. Pagination of resources from the API
+12. Caching for remember me logic.
+13. Dynamic Form Validator(Register Form)
 1. Validates multiple fields dynamically (e.g., email, password(lower, upper, symbols and numbers), phone number).
 2. Uses a configuration object to specify rules.
 3. Displays errors without reloading the page.
@@ -53,11 +39,11 @@ Ensure you have the following installed:
 
 # Steps
 
-1. Clone the repository:
+### Clone the repository:
 
-2. git clone https://github.com/RusokeMarvin/rusokeservicecops.git
+1. git clone https://github.com/RusokeMarvin/rusokeservicecops.git
 
-3. cd rusokeservicecops
+2. cd rusokeservicecops
 
 ### Install dependencies:
 
