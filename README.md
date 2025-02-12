@@ -61,6 +61,10 @@ http://localhost:3000
 This handles all the validation as required
 ![register](https://github.com/user-attachments/assets/f5426c7e-646a-49c3-879f-68f03f2a4a43)
 
+It displays validation errors without reloading the page
+![register2](https://github.com/user-attachments/assets/dd068082-2715-4877-b033-684e6e294ef5)
+
+
 ## Login
 This one accepts signin with Google and also has an animation above it that gazes at the active field so long as it's not a password field
 ![login1](https://github.com/user-attachments/assets/e225d7ef-3a74-412e-b495-8a8d41241559)
