@@ -69,3 +69,14 @@ npm start
 
 ### Open in browser:
 http://localhost:3000
+
+# PAGES
+![home](https://github.com/user-attachments/assets/9375f992-9349-4bcd-986d-5f821951e590)
+![login2](https://github.com/user-attachments/assets/717b89ce-621d-4cee-9dad-0af7eaae3b7d)
+![login1](https://github.com/user-attachments/assets/e225d7ef-3a74-412e-b495-8a8d41241559)
+
+![status](https://github.com/user-attachments/assets/298ebed3-632e-4a6d-9e38-357f89e7c60e)
+![register](https://github.com/user-attachments/assets/f5426c7e-646a-49c3-879f-68f03f2a4a43)
+
+
+
