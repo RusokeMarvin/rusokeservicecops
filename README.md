@@ -32,14 +32,14 @@ Pagination of resources from the API
 Caching for remember me logic.
 
 Dynamic Form Validator(Register Form)
-Validates multiple fields dynamically (e.g., email, password(lower, upper, symbols and numbers), phone number).
-Uses a configuration object to specify rules.
-Displays errors without reloading the page.
 
-Supports:
-Required fields.
-Regex validation.
-Minimum length validation.
+1. Validates multiple fields dynamically (e.g., email, password(lower, upper, symbols and numbers), phone number).
+2. Uses a configuration object to specify rules.
+3. Displays errors without reloading the page.
+4. Supports:
+1. Required fields.
+2. Regex validation.
+3. Minimum length validation.
 
 #### Installation
 
@@ -83,11 +83,11 @@ This is the second state of the animation where it closes the eyes when the acti
 ![login2](https://github.com/user-attachments/assets/717b89ce-621d-4cee-9dad-0af7eaae3b7d)
 
 ## Home Page
-This one has multiple buttons that trigger specific states. It uses useState react hooks for management of states together with useEffect hook to handle sideEffects.
+This one has multiple buttons that trigger specific states. It uses useState react hooks for management of states together with useEffect hook to handle sideEffects. And it supports all CRUD operations
 ![home](https://github.com/user-attachments/assets/9375f992-9349-4bcd-986d-5f821951e590)
 
 ## Todos
-This one of the edit points of the API. And it supports toggling of status of the Todo task
+This is one of the end points of the API. And it supports toggling of status of the Todo task
 ![status](https://github.com/user-attachments/assets/298ebed3-632e-4a6d-9e38-357f89e7c60e)
 
 
