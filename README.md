@@ -71,12 +71,25 @@ npm start
 http://localhost:3000
 
 # PAGES
-![home](https://github.com/user-attachments/assets/9375f992-9349-4bcd-986d-5f821951e590)
-![login2](https://github.com/user-attachments/assets/717b89ce-621d-4cee-9dad-0af7eaae3b7d)
+## Register page
+This handles all the validation as required
+![register](https://github.com/user-attachments/assets/f5426c7e-646a-49c3-879f-68f03f2a4a43)
+
+## Login
+This one accepts signin with Google and also has an animation above it that gazes at the active field so long as it's not a password field
 ![login1](https://github.com/user-attachments/assets/e225d7ef-3a74-412e-b495-8a8d41241559)
 
+This is the second state of the animation where it closes the eyes when the active field is now a password field due to confidentiallity
+![login2](https://github.com/user-attachments/assets/717b89ce-621d-4cee-9dad-0af7eaae3b7d)
+
+## Home Page
+This one has multiple buttons that trigger specific states. It uses useState react hooks for management of states together with useEffect hook to handle sideEffects.
+![home](https://github.com/user-attachments/assets/9375f992-9349-4bcd-986d-5f821951e590)
+
+## Todos
+This one of the edit points of the API. And it supports toggling of status of the Todo task
 ![status](https://github.com/user-attachments/assets/298ebed3-632e-4a6d-9e38-357f89e7c60e)
-![register](https://github.com/user-attachments/assets/f5426c7e-646a-49c3-879f-68f03f2a4a43)
+
 
 
 
