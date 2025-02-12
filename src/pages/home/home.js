@@ -11,7 +11,7 @@ function Home() {
     const [loading, setLoading] = useState(true);
     const [newPost, setNewPost] = useState({ title: '', body: '' });
 
-    // 🔹 Pagination State
+    // Pagination State
     const [page, setPage] = useState(1);
     const limit = 10; // Number of items per page
 
@@ -32,7 +32,7 @@ function Home() {
         fetchData();
     }, [fetchData]);
 
-    // 🟢 Create a new post
+    // Create a new post
     const createPost = async () => {
         if (!newPost.title || !newPost.body) return alert("Title & body required!");
         try {
@@ -49,7 +49,7 @@ function Home() {
         }
     };
 
-    // 🟡 Update a post
+    // Update a post
     const updatePost = async (id) => {
         const updatedTitle = prompt("Enter new title:");
         if (!updatedTitle) return;
@@ -66,7 +66,7 @@ function Home() {
         }
     };
 
-    // 🔴 Delete a post
+    // Delete a post
     const deletePost = async (id) => {
         if (!window.confirm("Are you sure you want to delete this post?")) return;
         try {
@@ -79,7 +79,7 @@ function Home() {
         }
     };
 
-    // ✅ Toggle Todo Completion
+    // Toggle Todo Completion
     const toggleTodo = async (id, completed) => {
         try {
             const response = await fetch(`https://jsonplaceholder.typicode.com/todos/${id}`, {
@@ -93,7 +93,8 @@ function Home() {
             console.error("Error updating todo:", error);
         }
     };
-
+    // This useEffect is meant to initialize Aos which is used for transitions
+    // The empty [] makes it run only onMount not everytime the component renders 
     useEffect(() => {
         Aos.init({ duration: 2000 });
     }, []);
@@ -131,6 +132,7 @@ function Home() {
                 <p className="loading">Loading...</p>
             ) : (
                 <div className="content">
+                    {/* Here i used a map method together with arrow functions to retrieve and loop through object properties */}
                     {data.map((item) => (
                         <div key={item.id} className="card" data-aos="slide-up">
                             {info === "posts" && (
@@ -187,6 +189,7 @@ function Home() {
                 </div>
             )}
             <div className="pagination">
+                {/* Here i handled pagination by limiting the number of items per page*/}
                 <button onClick={() => setPage(prev => Math.max(prev - 1, 1))} disabled={page === 1}>
                     Previous
                 </button>
@@ -194,8 +197,8 @@ function Home() {
                 <button onClick={() => setPage(prev => prev + 1)}>
                     Next
                 </button>
-                <br/>
-                <br/>
+                <br />
+                <br />
             </div>
 
             <Footer />
